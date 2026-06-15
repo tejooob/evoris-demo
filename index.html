@@ -182,27 +182,37 @@ section{scroll-margin-top:4.5rem}
 .doctors .section-head h2{color:var(--gold-bright)}
 .doctors .section-head p{color:var(--on-dark-dim)}
 .doctors .gold-rule{background:var(--gold)}
-.doc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
-.doc{
-  border:1px solid var(--line-dark);border-radius:20px;
-  padding:clamp(1.8rem,4vw,2.6rem);
+.doc-feature{
+  display:grid;grid-template-columns:minmax(0,340px) 1fr;
+  gap:clamp(1.6rem,4vw,3rem);align-items:center;
+}
+.doc-feature + .doc-feature{margin-top:clamp(2.4rem,5vw,4rem)}
+.doc-feature.reverse{grid-template-columns:1fr minmax(0,340px)}
+.doc-feature.reverse .doc-photo{order:2}
+.doc-photo{
+  aspect-ratio:4/5;border-radius:20px;
+  border:1px dashed var(--gold);
   background:linear-gradient(160deg, var(--pine-soft), transparent 70%);
+  display:grid;place-items:center;text-align:center;gap:0.8rem;
+  padding:1.5rem;color:var(--gold);
 }
-.doc-mark{
-  width:74px;height:74px;border-radius:50%;
-  display:grid;place-items:center;
-  border:1px solid var(--gold);
-  font-family:var(--font-display);font-size:1.6rem;color:var(--gold-bright);
-  margin-bottom:1.5rem;letter-spacing:0.05em;
-}
-.doc h3{font-size:1.45rem;color:var(--on-dark);letter-spacing:0.02em}
-.doc-degree{margin-top:0.35rem;font-size:0.8rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold)}
-.doc p{margin-top:1.1rem;color:var(--on-dark-dim);font-size:0.96rem}
+.doc-photo svg{width:42px;height:42px;opacity:0.85}
+.doc-photo span{font-size:0.74rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--on-dark-dim)}
+.doc-photo b{display:block;margin-top:0.3rem;color:var(--gold-bright);letter-spacing:0.05em}
+.doc-info h3{font-size:1.6rem;color:var(--on-dark);letter-spacing:0.02em}
+.doc-degree{font-size:0.8rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold)}
+.doc-info .doc-degree{margin-bottom:0.5rem}
+.doc-info > p{margin-top:1.1rem;color:var(--on-dark-dim);font-size:0.98rem;max-width:52ch}
 .doc-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.4rem}
 .doc-tags span{
   font-size:0.76rem;font-weight:700;letter-spacing:0.04em;
   border:1px solid var(--line-dark);color:var(--on-dark);
   padding:0.32rem 0.85rem;border-radius:99px;
+}
+@media (max-width:760px){
+  .doc-feature{grid-template-columns:1fr;gap:1.4rem}
+  .doc-feature.reverse .doc-photo{order:0}
+  .doc-photo{aspect-ratio:16/10;max-width:420px}
 }
 
 /* ---------- services ---------- */
@@ -362,13 +372,26 @@ footer a{color:var(--on-dark)}
 
 /* ---------- floating call (mobile) ---------- */
 .fab{
-  position:fixed;right:1.1rem;bottom:1.1rem;z-index:var(--z-fab);
-  display:none;align-items:center;gap:0.55rem;
+  position:fixed;right:1.1rem;bottom:5.4rem;z-index:var(--z-fab);
+  display:inline-flex;align-items:center;justify-content:center;
+  width:3.5rem;height:3.5rem;border-radius:50%;
   background:var(--gold);color:var(--pine-deep);text-decoration:none;
-  font-weight:800;font-size:0.92rem;padding:0.85rem 1.4rem;border-radius:99px;
   box-shadow:0 10px 30px oklch(0 0 0 / 0.35);
+  transition:transform 0.18s ease, box-shadow 0.18s ease;
 }
-@media (max-width:860px){ .fab{display:inline-flex} }
+.fab:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 14px 34px oklch(0 0 0 / 0.42)}
+.fab svg{width:26px;height:26px}
+
+.wa-fab{
+  position:fixed;right:1.1rem;bottom:1.1rem;z-index:var(--z-fab);
+  display:inline-flex;align-items:center;justify-content:center;
+  width:3.5rem;height:3.5rem;border-radius:50%;
+  background:#25D366;color:#fff;text-decoration:none;
+  box-shadow:0 10px 30px oklch(0 0 0 / 0.35);
+  transition:transform 0.18s ease, box-shadow 0.18s ease;
+}
+.wa-fab:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 14px 34px oklch(0 0 0 / 0.42)}
+.wa-fab svg{width:30px;height:30px}
 
 /* ---------- reveal motion ---------- */
 .reveal{opacity:1;transform:none}
@@ -430,7 +453,7 @@ footer a{color:var(--on-dark)}
         <p class="hero-note">Open Monday to Saturday &middot; <b>10 am – 2 pm</b> and <b>5 pm – 10 pm</b> &middot; Sunday on appointment</p>
       </div>
       <figure class="hero-figure reveal">
-        <img src="https://images.unsplash.com/photo-1489278353717-f64c6ee8a4d2?ixlib=rb-4.1.0&auto=format&fit=crop&w=900&q=80" alt="A relaxed, confident smile, the result Evoris works toward with every patient" width="420" height="525" fetchpriority="high">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.1.0&auto=format&fit=crop&w=900&q=80" alt="A relaxed, confident smile, the result Evoris works toward with every patient" width="420" height="525" fetchpriority="high">
         <figcaption>Healthy teeth, kept for life</figcaption>
       </figure>
     </div>
@@ -468,26 +491,35 @@ footer a{color:var(--on-dark)}
         <h2>Two specialists. One standard of care.</h2>
         <p>Your implant surgeon and your root canal specialist work side by side, so complex cases never need a referral across town.</p>
       </div>
-      <div class="doc-grid">
-        <article class="doc reveal">
-          <div class="doc-mark" aria-hidden="true">SD</div>
-          <h3>Dr. Shashank Deshpande</h3>
+      <article class="doc-feature reveal">
+        <div class="doc-photo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h3l1.5-2h9L18 7h3v12H3z"/><circle cx="12" cy="13" r="3.5"/></svg>
+          <span>Photo placeholder<b>Dr. Shashank Deshpande</b></span>
+        </div>
+        <div class="doc-info">
           <p class="doc-degree">BDS, MDS &middot; Periodontics</p>
+          <h3>Dr. Shashank Deshpande</h3>
           <p>Gum specialist and oral implantologist. Dr. Shashank handles dental implants, gum disease treatment, bone grafting and surgical extractions, restoring teeth that other clinics write off.</p>
           <div class="doc-tags">
             <span>Dental Implants</span><span>Gum Treatments</span><span>Bone Grafting</span><span>Oral Surgery</span>
           </div>
-        </article>
-        <article class="doc reveal">
-          <div class="doc-mark" aria-hidden="true">SV</div>
-          <h3>Dr. Shivani Vyavahare Deshpande</h3>
+        </div>
+      </article>
+
+      <article class="doc-feature reverse reveal">
+        <div class="doc-photo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h3l1.5-2h9L18 7h3v12H3z"/><circle cx="12" cy="13" r="3.5"/></svg>
+          <span>Photo placeholder<b>Dr. Shivani Vyavahare Deshpande</b></span>
+        </div>
+        <div class="doc-info">
           <p class="doc-degree">BDS, MDS &middot; Endodontics</p>
+          <h3>Dr. Shivani Vyavahare Deshpande</h3>
           <p>Root canal specialist and cosmetic dental surgeon. Dr. Shivani performs single-visit and complex root canals and designs smile makeovers, saving natural teeth wherever possible.</p>
           <div class="doc-tags">
             <span>Root Canal Treatment</span><span>Smile Design</span><span>Cosmetic Dentistry</span><span>Crowns &amp; Veneers</span>
           </div>
-        </article>
-      </div>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -785,8 +817,11 @@ footer a{color:var(--on-dark)}
 </footer>
 
 <a class="fab" href="tel:+919137161693" aria-label="Call Evoris Dental at 91371 61693">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.7.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.7.1.3 0 .7-.2 1l-2.3 2.1Z"/></svg>
-  Call now
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.7.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.7.1.3 0 .7-.2 1l-2.3 2.1Z"/></svg>
+</a>
+
+<a class="wa-fab" href="https://wa.me/919137161693?text=Hello%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Evoris%20Dental." target="_blank" rel="noopener" aria-label="Chat with Evoris Dental on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.86 9.86 0 0 0 4.73 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01ZM12.04 20.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 5.82 2.42 8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.23 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>
 </a>
 
 <script>
