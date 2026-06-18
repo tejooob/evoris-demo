@@ -193,6 +193,8 @@ export default function Home() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.1.0&auto=format&fit=crop&w=900&q=80"
+                srcSet="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=440 440w, https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=660 660w, https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=880 880w"
+                sizes="(max-width:860px) 88vw, 420px"
                 alt="A relaxed, confident smile, the result Evoris works toward with every patient"
                 width={420}
                 height={525}
@@ -235,6 +237,8 @@ export default function Home() {
             <img
               className="reveal"
               src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.1.0&auto=format&fit=crop&w=1100&q=80"
+              srcSet="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=560 560w, https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=820 820w, https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1100 1100w"
+              sizes="(max-width:860px) 90vw, 520px"
               alt="A bright, modern dental operatory with a fully equipped chair"
               width={550}
               height={412}
@@ -315,6 +319,8 @@ export default function Home() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="https://images.unsplash.com/photo-1593022356769-11f762e25ed9?ixlib=rb-4.1.0&auto=format&fit=crop&w=900&q=80"
+                srcSet="https://images.unsplash.com/photo-1593022356769-11f762e25ed9?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=480 480w, https://images.unsplash.com/photo-1593022356769-11f762e25ed9?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=720 720w, https://images.unsplash.com/photo-1593022356769-11f762e25ed9?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=960 960w"
+                sizes="(max-width:860px) 90vw, 450px"
                 alt="A dental model showing a titanium implant placed between natural teeth"
                 width={450}
                 height={360}

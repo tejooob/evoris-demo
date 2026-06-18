@@ -1,22 +1,30 @@
 "use client";
 
-import { useState } from "react";
-
-const ERROR_BORDER = "oklch(0.65 0.19 25)";
+import { useId, useRef, useState } from "react";
 
 export default function BookForm() {
   const [submitted, setSubmitted] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [touched, setTouched] = useState(false);
+  const [showErrors, setShowErrors] = useState(false);
 
-  const nameInvalid = touched && !name.trim();
-  const phoneInvalid = touched && !phone.trim();
+  const nameRef = useRef<HTMLInputElement>(null);
+  const phoneRef = useRef<HTMLInputElement>(null);
+  const uid = useId();
+  const nameErrId = `${uid}-name-err`;
+  const phoneErrId = `${uid}-phone-err`;
+
+  const nameInvalid = showErrors && !name.trim();
+  const phoneInvalid = showErrors && !phone.trim();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!name.trim() || !phone.trim()) {
-      setTouched(true);
+    const nameOk = !!name.trim();
+    const phoneOk = !!phone.trim();
+    if (!nameOk || !phoneOk) {
+      setShowErrors(true);
+      // move focus to the first field that needs attention
+      (nameOk ? phoneRef : nameRef).current?.focus();
       return;
     }
     setSubmitted(true);
@@ -33,8 +41,11 @@ export default function BookForm() {
         <form id="bookForm" noValidate onSubmit={handleSubmit}>
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="f-name">Full name</label>
+              <label htmlFor="f-name">
+                Full name <span className="req" aria-hidden="true">*</span>
+              </label>
               <input
+                ref={nameRef}
                 type="text"
                 id="f-name"
                 name="name"
@@ -42,13 +53,24 @@ export default function BookForm() {
                 autoComplete="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                style={nameInvalid ? { borderColor: ERROR_BORDER } : undefined}
                 required
+                aria-required="true"
+                aria-invalid={nameInvalid || undefined}
+                aria-describedby={nameInvalid ? nameErrId : undefined}
+                className={nameInvalid ? "is-invalid" : undefined}
               />
+              {nameInvalid && (
+                <p className="field-error" id={nameErrId} role="alert">
+                  Please enter your name.
+                </p>
+              )}
             </div>
             <div className="form-group">
-              <label htmlFor="f-phone">Phone number</label>
+              <label htmlFor="f-phone">
+                Phone number <span className="req" aria-hidden="true">*</span>
+              </label>
               <input
+                ref={phoneRef}
                 type="tel"
                 id="f-phone"
                 name="phone"
@@ -56,9 +78,17 @@ export default function BookForm() {
                 autoComplete="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                style={phoneInvalid ? { borderColor: ERROR_BORDER } : undefined}
                 required
+                aria-required="true"
+                aria-invalid={phoneInvalid || undefined}
+                aria-describedby={phoneInvalid ? phoneErrId : undefined}
+                className={phoneInvalid ? "is-invalid" : undefined}
               />
+              {phoneInvalid && (
+                <p className="field-error" id={phoneErrId} role="alert">
+                  Please enter a phone number so we can confirm your slot.
+                </p>
+              )}
             </div>
           </div>
           <div className="form-row">
@@ -101,6 +131,10 @@ export default function BookForm() {
               placeholder="Briefly describe your concern or any questions you have (optional)"
             />
           </div>
+          <p className="form-hint">
+            <span aria-hidden="true">*</span> Required. We only use this to confirm
+            your appointment.
+          </p>
           <button type="submit" className="form-submit">
             Request appointment confirmation
           </button>
@@ -108,7 +142,13 @@ export default function BookForm() {
       )}
 
       {submitted && (
-        <div className="form-success show" id="formSuccess" style={{ display: "flex" }}>
+        <div
+          className="form-success show"
+          id="formSuccess"
+          style={{ display: "flex" }}
+          role="status"
+          aria-live="polite"
+        >
           <svg
             width="52"
             height="52"
