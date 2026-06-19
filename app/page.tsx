@@ -1,4 +1,5 @@
 import BookForm from "@/components/BookForm";
+import MobileMenu from "@/components/MobileMenu";
 import SiteEnhancements from "@/components/SiteEnhancements";
 
 const PHONE = "+919137161693";
@@ -21,6 +22,17 @@ function StarIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
       <path d="M8 0l2 6h6l-5 3.7L13 16 8 12.3 3 16l2-6.3L0 6h6z" />
+    </svg>
+  );
+}
+
+function GoogleG() {
+  return (
+    <svg className="gmark" width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+      <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
+      <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+      <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
+      <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
     </svg>
   );
 }
@@ -100,27 +112,30 @@ const whyItems: { icon: React.ReactNode; title: string; body: string }[] = [
   },
 ];
 
+const GOOGLE_REVIEWS =
+  "https://www.google.com/maps/place/Evoris+Dental+Care+%26+Implant+Center/@19.0334305,73.0663018,17z/data=!4m8!3m7!1s0x3be7c368ee9ae20b:0x282c3c03b4e9430e!8m2!3d19.0334305!4d73.0688767!9m1!1b1!16s%2Fg%2F11yw5jbn8l?entry=ttu";
+
 const testimonials = [
   {
-    initials: "PR",
-    name: "Priya Rajput",
-    loc: "Kharghar, Navi Mumbai",
+    initials: "AM",
+    name: "Ajit Morey",
+    loc: "Google review · a month ago",
     quote:
-      "I had been putting off a root canal for two years out of fear. Dr. Shivani made the whole procedure completely painless. She explained every step, I barely felt anything, and it was done in a single visit. Wish I had come sooner.",
+      "Dr. Shashank and Dr. Shivani both are one of the most caring and dedicated doctors I have ever met. Their kindness, professionalism and genuine concern for patients make them truly special. They explain each and every step, give proper genuine advice and an affordable treatment plan. Clinic is also highly equipped with advanced machinery. I am deeply grateful for the care and guidance I received from both the doctors. Highly recommended for not just treatment but trust and compassion.",
   },
   {
-    initials: "SM",
-    name: "Suresh Mahajan",
-    loc: "Sector 10, Kharghar",
+    initials: "KC",
+    name: "Kirtiraj Chouhan",
+    loc: "Google review · 4 months ago",
     quote:
-      "Dr. Shashank placed two implants for me. The process was well-planned, he went over the X-rays with me and gave me a clear cost breakdown before starting. Three months later the crowns are on and they feel completely natural.",
+      "The clinic is fulfilled with all the facilities required for good treatment. Doctors are well qualified and very competent. Staff is very good and humble. Highly recommend!",
   },
   {
-    initials: "AK",
-    name: "Anita Kulkarni",
-    loc: "Sector 7, Kharghar",
+    initials: "ST",
+    name: "Shamala Tikotkar",
+    loc: "Google review · 4 months ago",
     quote:
-      "I brought my 8-year-old daughter here and Dr. Shivani was incredibly gentle with her. My daughter was not anxious at all by the end. The clinic is clean, the staff are calm, and I finally have a dentist I trust for the whole family.",
+      "My experience at the clinic was excellent, the doctor explained the procedure clearly which made me comfortable. The clinic was hygienic and the treatment was painless. I would definitely recommend this clinic to anyone looking for quality care.",
   },
 ];
 
@@ -153,11 +168,17 @@ export default function Home() {
             <a href="#why">Why Us</a>
             <a href="#book">Book</a>
             <a href="#visit">Visit Us</a>
-            <a className="call-pill" href={`tel:${PHONE}`}>
-              <PhoneIcon size={14} />
-              91371 61693
+            <a className="call-pill" href="#book">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+              Book appointment
             </a>
           </nav>
+          <MobileMenu />
         </div>
       </header>
 
@@ -209,7 +230,7 @@ export default function Home() {
           <div className="wrap">
             <p className="ribbon-item"><b>Implants &amp; Gum Care</b>by an MDS Periodontist</p>
             <p className="ribbon-item"><b>Root Canal &amp; Smile Design</b>by an MDS Endodontist</p>
-            <p className="ribbon-item"><b>Sector 8, Kharghar</b>2 minutes from Vasundhara-II CHS gate</p>
+            <p className="ribbon-item"><b>Sector 8, Kharghar</b>Minutes away from Kharghar Railway Station</p>
           </div>
         </div>
 
@@ -387,7 +408,8 @@ export default function Home() {
             <div className="testi-grid">
               {testimonials.map((t) => (
                 <article className="testi-card reveal" key={t.initials}>
-                  <div className="testi-stars" aria-label="5 out of 5 stars">
+                  <div className="testi-stars" aria-label="Rated 5 out of 5 on Google">
+                    <GoogleG />
                     <StarIcon />
                     <StarIcon />
                     <StarIcon />
@@ -405,6 +427,12 @@ export default function Home() {
                 </article>
               ))}
             </div>
+            <div className="testi-cta">
+              <a className="btn btn-ghost" href={GOOGLE_REVIEWS} target="_blank" rel="noopener">
+                <GoogleG />
+                View all of our Google reviews
+              </a>
+            </div>
           </div>
         </section>
 
@@ -413,31 +441,38 @@ export default function Home() {
             <div className="reveal">
               <div className="gold-rule" style={{ background: "var(--gold)" }} />
               <h2>Visit the clinic</h2>
-              <p className="visit-sub">Monday to Saturday &middot; Sunday on appointment</p>
-              <address>
-                <b>Evoris Dental Care &amp; Implant Center</b>
-                <br />
-                Shop No. 3, Vasundhara-II CHS,
-                <br />
-                Sector 8, Kharghar,
-                <br />
-                Navi Mumbai 410210
-              </address>
+              <p className="visit-sub">Sector 8, Kharghar &middot; Navi Mumbai</p>
               <a className="visit-phone" href={`tel:${PHONE}`}>+91 91371 61693</a>
-              <dl className="hours">
-                <div>
-                  <dt>Monday – Saturday, morning</dt>
-                  <dd>10:00 am – 2:00 pm</dd>
+              <address className="visit-info">
+                <div className="vi-row">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  <div>
+                    <span className="vi-label">Address</span>
+                    <p>
+                      Shop No. 3, Vasundhara-II CHS,
+                      <br />
+                      Sector 8, Kharghar, Navi Mumbai 410210
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <dt>Monday – Saturday, evening</dt>
-                  <dd>5:00 pm – 10:00 pm</dd>
+                <div className="vi-row">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  <div>
+                    <span className="vi-label">Hours</span>
+                    <p>
+                      Mon – Sat: 10 am – 2 pm &amp; 5 pm – 10 pm
+                      <br />
+                      Sunday: On appointment
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <dt>Sunday</dt>
-                  <dd>On appointment</dd>
-                </div>
-              </dl>
+              </address>
               <div className="visit-cta">
                 <a className="btn btn-gold" href={MAPS_SEARCH} target="_blank" rel="noopener">
                   Get directions on Google Maps
@@ -473,32 +508,6 @@ export default function Home() {
                   Walk-ins are welcome but a prior booking means no waiting. We will
                   call to confirm the time that works for you.
                 </p>
-                <div className="book-info">
-                  <div className="book-info-row">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                    </svg>
-                    <span><b>+91 91371 61693</b></span>
-                  </div>
-                  <div className="book-info-row">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                      <circle cx="12" cy="10" r="3" />
-                    </svg>
-                    <span>Shop No. 3, Vasundhara-II CHS, Sector 8, Kharghar, Navi Mumbai 410210</span>
-                  </div>
-                  <div className="book-info-row">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
-                      <circle cx="12" cy="12" r="10" />
-                      <polyline points="12 6 12 12 16 14" />
-                    </svg>
-                    <span>
-                      Mon – Sat: <b>10 am – 2 pm</b> and <b>5 pm – 10 pm</b>
-                      <br />
-                      Sunday: <b>On appointment</b>
-                    </span>
-                  </div>
-                </div>
               </div>
               <div className="reveal">
                 <BookForm />

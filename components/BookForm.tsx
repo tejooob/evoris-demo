@@ -27,6 +27,25 @@ export default function BookForm() {
       (nameOk ? phoneRef : nameRef).current?.focus();
       return;
     }
+
+    // Hand the request off to the clinic's WhatsApp with the details prefilled.
+    const fd = new FormData(e.currentTarget);
+    const service = String(fd.get("service") ?? "").trim();
+    const time = String(fd.get("time") ?? "").trim();
+    const message = String(fd.get("message") ?? "").trim();
+    const lines = [
+      "Appointment request from the Evoris website",
+      `Name: ${name.trim()}`,
+      `Phone: ${phone.trim()}`,
+    ];
+    if (service) lines.push(`Treatment: ${service}`);
+    if (time) lines.push(`Preferred time: ${time}`);
+    if (message) lines.push(`Notes: ${message}`);
+    const waUrl = `https://wa.me/919137161693?text=${encodeURIComponent(
+      lines.join("\n")
+    )}`;
+    window.open(waUrl, "_blank", "noopener");
+
     setSubmitted(true);
     requestAnimationFrame(() =>
       document
@@ -132,11 +151,11 @@ export default function BookForm() {
             />
           </div>
           <p className="form-hint">
-            <span aria-hidden="true">*</span> Required. We only use this to confirm
-            your appointment.
+            <span aria-hidden="true">*</span> Required. Submitting opens WhatsApp
+            with your details ready to send.
           </p>
           <button type="submit" className="form-submit">
-            Request appointment confirmation
+            Request appointment on WhatsApp
           </button>
         </form>
       )}
@@ -163,10 +182,10 @@ export default function BookForm() {
             <circle cx="12" cy="12" r="10" />
             <polyline points="9 12 11 14 15 10" />
           </svg>
-          <h4>Request received</h4>
+          <h4>Almost there</h4>
           <p>
-            Thank you. The Evoris team will call you to confirm your appointment
-            time.
+            We&apos;ve opened WhatsApp with your details. Send the message and the
+            Evoris team will confirm your appointment time.
           </p>
         </div>
       )}
