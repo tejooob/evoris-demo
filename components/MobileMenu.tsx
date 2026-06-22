@@ -4,12 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 const links: [string, string][] = [
-  ["Home", "#top"],
-  ["About", "#about"],
-  ["Services", "#services"],
-  ["Testimonials", "#testimonials"],
-  ["Contact", "#visit"],
-  ["Book", "#book"],
+  ["Home", "/"],
+  ["About", "/#about"],
+  ["Treatments", "/treatments"],
+  ["Gallery", "/#gallery"],
+  ["Testimonials", "/#testimonials"],
+  ["Contact", "/#visit"],
+  ["Book", "/#book"],
 ];
 
 export default function MobileMenu() {

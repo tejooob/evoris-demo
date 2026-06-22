@@ -1,14 +1,11 @@
 import BookForm from "@/components/BookForm";
-import MobileMenu from "@/components/MobileMenu";
+import HeroVideo from "@/components/HeroVideo";
 import SiteEnhancements from "@/components/SiteEnhancements";
-
-const PHONE = "+919137161693";
-const WHATSAPP =
-  "https://wa.me/919137161693?text=Hello%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Evoris%20Dental.";
-const MAPS_SEARCH =
-  "https://www.google.com/maps/search/?api=1&query=Evoris+Dental+Care+%26+Implant+Center+Sector+8+Kharghar+Navi+Mumbai";
-const MAPS_EMBED =
-  "https://www.google.com/maps?q=Evoris%20Dental%20Care%20%26%20Implant%20Center%2C%20Sector%208%2C%20Kharghar%2C%20Navi%20Mumbai%20410210&output=embed";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
+import FloatingButtons from "@/components/FloatingButtons";
+import { services } from "@/lib/services";
+import { PHONE, WHATSAPP, MAPS_SEARCH, MAPS_EMBED, GOOGLE_REVIEWS } from "@/lib/site";
 
 function PhoneIcon({ size = 15 }: { size?: number }) {
   return (
@@ -36,17 +33,6 @@ function GoogleG() {
     </svg>
   );
 }
-
-const services: [string, string][] = [
-  ["Root Canal Treatment", "Painless single-visit and retreatment root canals that save your natural tooth."],
-  ["Gum & Bone Care", "Treatment for bleeding gums, bad breath, loose teeth and receding gums."],
-  ["Smile Design & Veneers", "Cosmetic corrections for chipped, stained, gapped or uneven front teeth."],
-  ["Teeth Whitening", "In-clinic whitening for a visibly brighter smile in a single sitting."],
-  ["Crowns & Bridges", "Metal-free ceramic and zirconia crowns matched to your natural shade."],
-  ["Wisdom Tooth Removal", "Safe surgical extraction of impacted and painful wisdom teeth."],
-  ["Kids' Dentistry", "Gentle checkups, fillings and fluoride care for children of all ages."],
-  ["Cleaning & Polishing", "Ultrasonic scaling and polishing to keep gums healthy between visits."],
-];
 
 const whyItems: { icon: React.ReactNode; title: string; body: string }[] = [
   {
@@ -112,9 +98,6 @@ const whyItems: { icon: React.ReactNode; title: string; body: string }[] = [
   },
 ];
 
-const GOOGLE_REVIEWS =
-  "https://www.google.com/maps/place/Evoris+Dental+Care+%26+Implant+Center/@19.0334305,73.0663018,17z/data=!4m8!3m7!1s0x3be7c368ee9ae20b:0x282c3c03b4e9430e!8m2!3d19.0334305!4d73.0688767!9m1!1b1!16s%2Fg%2F11yw5jbn8l?entry=ttu";
-
 const testimonials = [
   {
     initials: "AM",
@@ -167,41 +150,12 @@ const docCameraIcon = (
 export default function Home() {
   return (
     <>
-      <header className="topbar">
-        <div className="wrap">
-          <a className="brand" href="#top" aria-label="Evoris Dental Care and Implant Center, home">
-            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <path d="M20 4c-4.5 0-6 2.6-9 2.6S6.7 9 6.7 13.4c0 7 4.6 12.8 6.6 19.2.7 2.2 3.2 2.3 3.7 0 .5-2.5.6-7.2 3-7.2s2.5 4.7 3 7.2c.5 2.3 3 2.2 3.7 0 2-6.4 6.6-12.2 6.6-19.2 0-4.4-1.3-6.8-4.3-6.8S24.5 4 20 4Z" stroke="oklch(0.515 0.088 68)" strokeWidth="1.6" />
-              <circle cx="20" cy="14" r="3.4" fill="oklch(0.72 0.088 82 / 0.7)" />
-            </svg>
-            <span>
-              <span className="brand-name">EVORIS</span>
-              <span className="brand-sub">Dental Care &amp; Implant Center</span>
-            </span>
-          </a>
-          <nav className="topnav" aria-label="Main">
-            <a href="#about">The Clinic</a>
-            <a href="#doctors">Doctors</a>
-            <a href="#services">Treatments</a>
-            <a href="#why">Why Us</a>
-            <a href="#book">Book</a>
-            <a href="#visit">Visit Us</a>
-            <a className="call-pill" href="#book">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
-              Book appointment
-            </a>
-          </nav>
-          <MobileMenu />
-        </div>
-      </header>
+      <SiteHeader />
 
       <main id="top">
         <section className="hero">
+          <HeroVideo />
+          <div className="hero-scrim" aria-hidden="true" />
           <div className="wrap">
             <div className="hero-intro">
               <p className="hero-kicker">Sector 8, Kharghar &middot; Navi Mumbai</p>
@@ -228,19 +182,6 @@ export default function Home() {
                 <b>5 pm – 10 pm</b> &middot; Sunday on appointment
               </p>
             </div>
-            <figure className="hero-figure reveal">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.1.0&auto=format&fit=crop&w=900&q=80"
-                srcSet="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=440 440w, https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=660 660w, https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=880 880w"
-                sizes="(max-width:860px) 88vw, 420px"
-                alt="A relaxed, confident smile, the result Evoris works toward with every patient"
-                width={420}
-                height={525}
-                fetchPriority="high"
-              />
-              <figcaption>Healthy teeth, kept for life</figcaption>
-            </figure>
           </div>
         </section>
 
@@ -275,10 +216,8 @@ export default function Home() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className="reveal"
-              src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.1.0&auto=format&fit=crop&w=1100&q=80"
-              srcSet="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=560 560w, https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=820 820w, https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1100 1100w"
-              sizes="(max-width:860px) 90vw, 520px"
-              alt="A bright, modern dental operatory with a fully equipped chair"
+              src="/clinic/operatory-2.jpeg"
+              alt="The Evoris operatory in Kharghar, with the dental chair, chairside monitor and sterilization area"
               width={550}
               height={412}
               loading="lazy"
@@ -349,44 +288,26 @@ export default function Home() {
               <div className="gold-rule" />
               <h2>Treatments at Evoris</h2>
               <p>
-                From a routine cleaning to full-mouth implant rehabilitation, planned
-                and performed in-house by the specialists themselves.
+                From painless root canals to implants, Invisalign and full-mouth
+                rehabilitation, all planned and performed in-house by the specialists.
               </p>
             </div>
 
-            <div className="svc-feature reveal">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://images.unsplash.com/photo-1593022356769-11f762e25ed9?ixlib=rb-4.1.0&auto=format&fit=crop&w=900&q=80"
-                srcSet="https://images.unsplash.com/photo-1593022356769-11f762e25ed9?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=480 480w, https://images.unsplash.com/photo-1593022356769-11f762e25ed9?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=720 720w, https://images.unsplash.com/photo-1593022356769-11f762e25ed9?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=960 960w"
-                sizes="(max-width:860px) 90vw, 450px"
-                alt="A dental model showing a titanium implant placed between natural teeth"
-                width={450}
-                height={360}
-                loading="lazy"
-              />
-              <div>
-                <h3>Dental implants: a fixed tooth, not a loose denture</h3>
-                <p>
-                  A missing tooth replaced with a titanium root and a permanent crown
-                  that looks, feels and chews like your own. Planned on X-ray by our
-                  implantologist, with single-tooth, multiple-teeth and full-arch
-                  options.
-                </p>
-                <a className="btn btn-navy" href={`tel:${PHONE}`}>Ask about implant options</a>
-              </div>
-            </div>
-
-            <div className="svc-list">
-              {services.map(([title, body]) => (
-                <div className="svc" key={title}>
-                  <h4>
-                    <StarIcon />
-                    {title}
-                  </h4>
-                  <p>{body}</p>
-                </div>
+            <ul className="svc-teaser">
+              {services.map((s, i) => (
+                <li className="reveal" style={{ ["--i"]: i } as React.CSSProperties} key={s.slug}>
+                  <span className="svc-dot" aria-hidden="true" />
+                  {s.title}
+                </li>
               ))}
+            </ul>
+            <div className="svc-teaser-cta">
+              <a className="btn btn-gold" href="/treatments">
+                View all treatments
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
             </div>
           </div>
         </section>
@@ -402,8 +323,8 @@ export default function Home() {
               </p>
             </div>
             <div className="gallery-grid">
-              {gallery.map((g) => (
-                <figure className="gallery-item reveal" key={g.src}>
+              {gallery.map((g, i) => (
+                <figure className="gallery-item reveal" style={{ ["--i"]: i } as React.CSSProperties} key={g.src}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={g.src} alt={g.alt} loading="lazy" />
                   <figcaption>{g.caption}</figcaption>
@@ -424,8 +345,8 @@ export default function Home() {
               </p>
             </div>
             <div className="tech-grid">
-              {technology.map((t) => (
-                <article className="tech-card reveal" key={t.src}>
+              {technology.map((t, i) => (
+                <article className="tech-card reveal" style={{ ["--i"]: i } as React.CSSProperties} key={t.src}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={t.src} alt={t.alt} loading="lazy" />
                   <div className="tc-body">
@@ -449,8 +370,8 @@ export default function Home() {
               </p>
             </div>
             <div className="why-grid">
-              {whyItems.map((item) => (
-                <div className="why-card reveal" key={item.title}>
+              {whyItems.map((item, i) => (
+                <div className="why-card reveal" style={{ ["--i"]: i } as React.CSSProperties} key={item.title}>
                   <div className="why-icon">{item.icon}</div>
                   <h3>{item.title}</h3>
                   <p>{item.body}</p>
@@ -471,8 +392,8 @@ export default function Home() {
               </p>
             </div>
             <div className="testi-grid">
-              {testimonials.map((t) => (
-                <article className="testi-card reveal" key={t.initials}>
+              {testimonials.map((t, i) => (
+                <article className="testi-card reveal" style={{ ["--i"]: i } as React.CSSProperties} key={t.initials}>
                   <div className="testi-stars" aria-label="Rated 5 out of 5 on Google">
                     <GoogleG />
                     <StarIcon />
@@ -582,32 +503,8 @@ export default function Home() {
         </section>
       </main>
 
-      <footer>
-        <div className="wrap">
-          <span className="f-brand">EVORIS &middot; Dental Care &amp; Implant Center</span>
-          <span>Dr. Shashank Deshpande &middot; Dr. Shivani Vyavahare Deshpande</span>
-          <span>
-            <a href={`tel:${PHONE}`}>91371 61693</a> &middot; Sector 8, Kharghar
-          </span>
-        </div>
-      </footer>
-
-      <a className="fab" href={`tel:${PHONE}`} aria-label="Call Evoris Dental at 91371 61693">
-        <PhoneIcon size={24} />
-      </a>
-
-      <a
-        className="wa-fab"
-        href={WHATSAPP}
-        target="_blank"
-        rel="noopener"
-        aria-label="Chat with Evoris Dental on WhatsApp"
-      >
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.86 9.86 0 0 0 4.73 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01ZM12.04 20.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 5.82 2.42 8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.23 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z" />
-        </svg>
-      </a>
-
+      <SiteFooter />
+      <FloatingButtons />
       <SiteEnhancements />
     </>
   );

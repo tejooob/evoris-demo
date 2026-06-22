@@ -4,8 +4,10 @@ import { useEffect } from "react";
 
 export default function SiteEnhancements() {
   useEffect(() => {
-    document.documentElement.classList.add("js");
+    const root = document.documentElement;
+    root.classList.add("js");
 
+    // Scroll reveals (once each), via IntersectionObserver.
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
@@ -17,10 +19,27 @@ export default function SiteEnhancements() {
       },
       { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
     );
+    document.querySelectorAll(".reveal, .gold-rule").forEach((el) => io.observe(el));
 
-    document
-      .querySelectorAll(".reveal, .gold-rule")
-      .forEach((el) => io.observe(el));
+    // Scroll-linked effects: header condense + top progress bar (rAF-throttled).
+    const progress = document.getElementById("scrollProgress");
+    let ticking = false;
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        root.classList.toggle("scrolled", y > 8);
+        if (progress) {
+          const max = document.documentElement.scrollHeight - window.innerHeight;
+          progress.style.transform = `scaleX(${max > 0 ? Math.min(y / max, 1) : 0})`;
+        }
+        ticking = false;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
 
     // eslint-disable-next-line no-console
     console.log(
@@ -32,8 +51,11 @@ export default function SiteEnhancements() {
       "Sector 8, Kharghar, Navi Mumbai. Built with care — questions? Call 91371 61693."
     );
 
-    return () => io.disconnect();
+    return () => {
+      io.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
-  return null;
+  return <div id="scrollProgress" className="scroll-progress" aria-hidden="true" />;
 }
