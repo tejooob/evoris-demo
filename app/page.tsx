@@ -139,6 +139,24 @@ const testimonials = [
   },
 ];
 
+const gallery: { src: string; alt: string; caption: string }[] = [
+  { src: "/clinic/reception.jpeg", alt: "Evoris reception and waiting area with the clinic sign and sterilization corner", caption: "Reception & waiting area" },
+  { src: "/clinic/consultation.jpeg", alt: "Dr. Shashank reviewing a dental X-ray with a patient at the consultation desk", caption: "Consultation room" },
+  { src: "/clinic/treatment-room.jpeg", alt: "The main dental treatment chair with overhead light and chairside monitor", caption: "Treatment chair" },
+  { src: "/clinic/operatory.jpeg", alt: "Wide view of the operatory with the dental chair and sterilization bay", caption: "Operatory" },
+  { src: "/clinic/consultation-desk.jpeg", alt: "Consultation desk with monitor, implant models and treatment certificates", caption: "Diagnosis & planning desk" },
+  { src: "/clinic/sterilization.jpeg", alt: "Sterilization counter with autoclave, water distiller and instrument storage", caption: "Sterilization bay" },
+];
+
+const technology: { src: string; alt: string; name: string; desc: string }[] = [
+  { src: "/clinic/tech-xray.jpeg", name: "Digital X-ray & RVG", desc: "Vatech portable X-ray with an EzSensor RVG sensor for instant, low-dose digital radiographs.", alt: "Vatech portable dental X-ray unit with an EzSensor RVG digital sensor" },
+  { src: "/clinic/tech-scaler.jpeg", name: "Ultrasonic scaler", desc: "DTE D5 LED ultrasonic scaling for thorough, comfortable cleaning and gum care.", alt: "DTE D5 LED ultrasonic scaler mounted on the dental unit" },
+  { src: "/clinic/tech-curing-light.jpeg", name: "LED curing light", desc: "Ivoclar Bluephase N for fast, reliable setting of tooth-coloured fillings and bonding.", alt: "Ivoclar Bluephase N LED curing light on its charging stand" },
+  { src: "/clinic/tech-obturation.jpeg", name: "Cordless obturation", desc: "Woodpecker Fi-P warm gutta-percha system for dense, precise root canal fillings.", alt: "Woodpecker Fi-P cordless gutta-percha obturation pen on its base" },
+  { src: "/clinic/tech-loupes.jpeg", name: "Magnification loupes", desc: "Admetec surgical loupes for magnified precision during fine and surgical procedures.", alt: "Admetec ergo dental magnification loupes with carrying case" },
+  { src: "/clinic/tech-autoclave.jpeg", name: "Class-B sterilization", desc: "Autoclave and water distiller, with sealed instrument kits opened in front of you.", alt: "Class-B autoclave sterilizer with a water distiller in the sterilization corner" },
+];
+
 const docCameraIcon = (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
     <path d="M3 7h3l1.5-2h9L18 7h3v12H3z" />
@@ -368,6 +386,53 @@ export default function Home() {
                   </h4>
                   <p>{body}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="gallery" className="section gallery">
+          <div className="wrap">
+            <div className="section-head">
+              <div className="gold-rule" />
+              <h2>Inside Evoris</h2>
+              <p>
+                A calm, spotless clinic in Sector 8, Kharghar, built for careful
+                dentistry. Have a look around before you visit.
+              </p>
+            </div>
+            <div className="gallery-grid">
+              {gallery.map((g) => (
+                <figure className="gallery-item reveal" key={g.src}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={g.src} alt={g.alt} loading="lazy" />
+                  <figcaption>{g.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="technology" className="section tech">
+          <div className="wrap">
+            <div className="section-head">
+              <div className="gold-rule" />
+              <h2>Our advanced technology</h2>
+              <p>
+                Precise diagnosis and comfortable treatment come from the right
+                equipment. Here is some of what we use, in-house.
+              </p>
+            </div>
+            <div className="tech-grid">
+              {technology.map((t) => (
+                <article className="tech-card reveal" key={t.src}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={t.src} alt={t.alt} loading="lazy" />
+                  <div className="tc-body">
+                    <h3>{t.name}</h3>
+                    <p>{t.desc}</p>
+                  </div>
+                </article>
               ))}
             </div>
           </div>
