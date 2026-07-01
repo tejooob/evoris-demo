@@ -147,6 +147,85 @@ const docCameraIcon = (
   </svg>
 );
 
+const mStroke = {
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.7,
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+} as const;
+const iconExperience = (
+  <svg viewBox="0 0 24 24" {...mStroke} aria-hidden="true">
+    <circle cx="12" cy="12" r="9" />
+    <polyline points="12 7 12 12 15.5 14" />
+  </svg>
+);
+const iconTeaching = (
+  <svg viewBox="0 0 24 24" {...mStroke} aria-hidden="true">
+    <path d="M22 10 12 5 2 10l10 5 10-5Z" />
+    <path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5" />
+  </svg>
+);
+const iconResearch = (
+  <svg viewBox="0 0 24 24" {...mStroke} aria-hidden="true">
+    <circle cx="12" cy="9" r="6" />
+    <path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5" />
+  </svg>
+);
+
+type Doctor = {
+  degree: string;
+  name: string;
+  photo?: string;
+  roles: string[];
+  bio: string;
+  meta: { icon: React.ReactNode; text: string }[];
+  expertise: string[];
+};
+
+const doctors: Doctor[] = [
+  {
+    degree: "BDS, MDS · Periodontology & Oral Implantology",
+    name: "Dr. Shashank Deshpande",
+    roles: ["Periodontist", "Oral Implantologist", "PhD Scholar"],
+    bio: "A gum specialist and oral implantologist focused on advanced, evidence-based care with an emphasis on patient comfort and long-term oral health. He diagnoses and treats gum disease, performs periodontal surgery and places advanced implants, restoring both function and aesthetics with precision and painless, minimally invasive techniques.",
+    meta: [
+      { icon: iconExperience, text: "6+ years of clinical experience" },
+      { icon: iconTeaching, text: "Assistant Professor, Terna Dental College, Navi Mumbai" },
+      { icon: iconResearch, text: "PhD Scholar in Periodontology & Oral Implantology" },
+    ],
+    expertise: [
+      "Immediate dental implants",
+      "Gum & soft-tissue disease",
+      "Scaling & root planing",
+      "Periodontal flap surgery",
+      "Bone grafting & ridge augmentation",
+      "Gum grafting",
+      "Crown lengthening",
+      "Peri-implant care",
+    ],
+  },
+  {
+    degree: "BDS, MDS · Conservative Dentistry & Endodontics",
+    name: "Dr. Shivani Vyavahare Deshpande",
+    roles: ["Endodontist", "Cosmetic Dental Surgeon"],
+    bio: "A conservative dentistry and endodontics specialist dedicated to preserving natural teeth and restoring confident smiles through precise, minimally invasive care. Known for her gentle approach, she takes time to understand each patient and builds personalized, evidence-based treatment plans for comfortable, long-lasting results.",
+    meta: [
+      { icon: iconExperience, text: "4+ years of clinical experience" },
+      { icon: iconTeaching, text: "Faculty, MGM Dental College & Hospital, Kamothe, Mumbai" },
+      { icon: iconResearch, text: "BDS, Government Dental College, Nagpur" },
+    ],
+    expertise: [
+      "Root canal treatment",
+      "Aesthetic restorations",
+      "Full-mouth rehabilitation",
+      "Dental veneers",
+      "Smile enhancement",
+      "Minimally invasive dentistry",
+    ],
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -236,49 +315,48 @@ export default function Home() {
               </p>
             </div>
 
-            <article className="doc-feature reveal">
-              <div className="doc-photo" aria-hidden="true">
-                {docCameraIcon}
-                <span>Photo placeholder<b>Dr. Shashank Deshpande</b></span>
-              </div>
-              <div className="doc-info">
-                <p className="doc-degree">BDS, MDS &middot; Periodontics</p>
-                <h3>Dr. Shashank Deshpande</h3>
-                <p>
-                  Gum specialist and oral implantologist. Dr. Shashank handles dental
-                  implants, gum disease treatment, bone grafting and surgical
-                  extractions, restoring teeth that other clinics write off.
-                </p>
-                <div className="doc-tags">
-                  <span>Dental Implants</span>
-                  <span>Gum Treatments</span>
-                  <span>Bone Grafting</span>
-                  <span>Oral Surgery</span>
+            {doctors.map((d, i) => (
+              <article className={`doc-card reveal${i % 2 === 1 ? " reverse" : ""}`} key={d.name}>
+                <div className="doc-photo" aria-hidden={d.photo ? undefined : true}>
+                  {d.photo ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={d.photo} alt={`Portrait of ${d.name}`} loading="lazy" />
+                  ) : (
+                    <>
+                      {docCameraIcon}
+                      <span>
+                        Photo placeholder
+                        <b>{d.name}</b>
+                      </span>
+                    </>
+                  )}
                 </div>
-              </div>
-            </article>
-
-            <article className="doc-feature reverse reveal">
-              <div className="doc-photo" aria-hidden="true">
-                {docCameraIcon}
-                <span>Photo placeholder<b>Dr. Shivani Vyavahare Deshpande</b></span>
-              </div>
-              <div className="doc-info">
-                <p className="doc-degree">BDS, MDS &middot; Endodontics</p>
-                <h3>Dr. Shivani Vyavahare Deshpande</h3>
-                <p>
-                  Root canal specialist and cosmetic dental surgeon. Dr. Shivani
-                  performs single-visit and complex root canals and designs smile
-                  makeovers, saving natural teeth wherever possible.
-                </p>
-                <div className="doc-tags">
-                  <span>Root Canal Treatment</span>
-                  <span>Smile Design</span>
-                  <span>Cosmetic Dentistry</span>
-                  <span>Crowns &amp; Veneers</span>
+                <div className="doc-info">
+                  <p className="doc-degree">{d.degree}</p>
+                  <h3>{d.name}</h3>
+                  <div className="doc-roles">
+                    {d.roles.map((r) => (
+                      <span key={r}>{r}</span>
+                    ))}
+                  </div>
+                  <p className="doc-bio">{d.bio}</p>
+                  <ul className="doc-meta">
+                    {d.meta.map((m) => (
+                      <li key={m.text}>
+                        {m.icon}
+                        <span>{m.text}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="doc-focus-label">Focus areas</p>
+                  <div className="doc-tags">
+                    {d.expertise.map((e) => (
+                      <span key={e}>{e}</span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </article>
+              </article>
+            ))}
           </div>
         </section>
 
