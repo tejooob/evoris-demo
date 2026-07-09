@@ -30,6 +30,13 @@ export default function Treatments() {
               rehabilitation, every treatment is planned and performed in-house by our
               two MDS specialists, with clear costs explained up front.
             </p>
+            <p className="tx-specialty-links">
+              Gum disease and dental implants are led by{" "}
+              <a href="/periodontics-implants">periodontics &amp; dental implants</a>{" "}
+              with Dr. Shashank Deshpande. Root canals, veneers and smile design are led
+              by <a href="/root-canal-dentistry">root canal &amp; restorative dentistry</a>{" "}
+              with Dr. Shivani Vyavahare Deshpande.
+            </p>
           </div>
         </section>
 
@@ -37,7 +44,12 @@ export default function Treatments() {
           <div className="wrap">
             <div className="svc-grid">
               {services.map((s, i) => (
-                <article className="svc-card reveal" style={{ ["--i"]: i } as React.CSSProperties} key={s.slug}>
+                <article
+                  className="svc-card reveal"
+                  id={s.slug}
+                  style={{ ["--i"]: i } as React.CSSProperties}
+                  key={s.slug}
+                >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={`/services/${s.slug}.jpg`} alt={s.alt} loading="lazy" />
                   <div className="svc-body">

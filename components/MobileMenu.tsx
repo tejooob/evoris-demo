@@ -7,9 +7,12 @@ const links: [string, string][] = [
   ["Home", "/"],
   ["About", "/#about"],
   ["Treatments", "/treatments"],
+  ["Periodontics & Implants", "/periodontics-implants"],
+  ["Root Canal Care", "/root-canal-dentistry"],
   ["Gallery", "/#gallery"],
   ["Testimonials", "/#testimonials"],
   ["Contact", "/#visit"],
+  ["Smile Quiz", "/#quiz"],
   ["Book", "/#book"],
 ];
 

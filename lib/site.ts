@@ -1,3 +1,6 @@
+// Set this to the production domain before going live.
+export const SITE_URL = "https://www.evorisdental.com";
+
 export const PHONE = "+919137161693";
 export const WHATSAPP =
   "https://wa.me/919137161693?text=Hello%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Evoris%20Dental.";

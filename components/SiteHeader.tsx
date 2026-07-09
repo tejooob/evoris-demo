@@ -16,7 +16,19 @@ export default function SiteHeader() {
         </a>
         <nav className="topnav" aria-label="Main">
           <a href="/#about">The Clinic</a>
-          <a href="/#doctors">Doctors</a>
+          <div className="nav-drop">
+            <a href="/#doctors" className="nav-drop-trigger">
+              Doctors
+              <svg className="nav-drop-chev" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </a>
+            <div className="nav-drop-menu">
+              <a href="/#doctors">Meet both doctors</a>
+              <a href="/periodontics-implants">Periodontics &amp; Implants</a>
+              <a href="/root-canal-dentistry">Root Canal &amp; Restorative</a>
+            </div>
+          </div>
           <a href="/treatments">Treatments</a>
           <a href="/#why">Why Us</a>
           <a href="/#visit">Visit Us</a>

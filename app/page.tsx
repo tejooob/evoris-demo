@@ -1,9 +1,12 @@
 import BookForm from "@/components/BookForm";
+import DoctorCard from "@/components/DoctorCard";
 import HeroVideo from "@/components/HeroVideo";
 import SiteEnhancements from "@/components/SiteEnhancements";
+import SmileQuiz from "@/components/SmileQuiz";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import FloatingButtons from "@/components/FloatingButtons";
+import { doctors } from "@/lib/doctors";
 import { services } from "@/lib/services";
 import { PHONE, WHATSAPP, MAPS_SEARCH, MAPS_EMBED, GOOGLE_REVIEWS } from "@/lib/site";
 
@@ -122,6 +125,27 @@ const testimonials = [
   },
 ];
 
+const smileResults: { src: string; alt: string; title: string; desc: string }[] = [
+  {
+    src: "/results/transformation-1.jpg",
+    alt: "Illustrative before and after example of gap closure and smile design with veneers",
+    title: "Smile Design & Veneers",
+    desc: "Uneven, gapped front teeth closed and reshaped into a balanced, natural smile.",
+  },
+  {
+    src: "/results/transformation-2.jpg",
+    alt: "Illustrative before and after example of teeth whitening and contouring",
+    title: "Teeth Whitening & Contouring",
+    desc: "Discoloured enamel brightened and edges refined for a cleaner, more even smile line.",
+  },
+  {
+    src: "/results/transformation-3.jpg",
+    alt: "Illustrative before and after example of a full smile restoration with crowns",
+    title: "Full Smile Restoration",
+    desc: "Chipped, worn and gapped teeth rebuilt with crowns for a complete, confident smile.",
+  },
+];
+
 const gallery: { src: string; alt: string; caption: string }[] = [
   { src: "/clinic/reception.jpeg", alt: "Evoris reception and waiting area with the clinic sign and sterilization corner", caption: "Reception & waiting area" },
   { src: "/clinic/consultation.jpeg", alt: "Dr. Shashank reviewing a dental X-ray with a patient at the consultation desk", caption: "Consultation room" },
@@ -138,92 +162,6 @@ const technology: { src: string; alt: string; name: string; desc: string }[] = [
   { src: "/clinic/tech-obturation.jpeg", name: "Cordless obturation", desc: "Woodpecker Fi-P warm gutta-percha system for dense, precise root canal fillings.", alt: "Woodpecker Fi-P cordless gutta-percha obturation pen on its base" },
   { src: "/clinic/tech-loupes.jpeg", name: "Magnification loupes", desc: "Admetec surgical loupes for magnified precision during fine and surgical procedures.", alt: "Admetec ergo dental magnification loupes with carrying case" },
   { src: "/clinic/tech-autoclave.jpeg", name: "Class-B sterilization", desc: "Autoclave and water distiller, with sealed instrument kits opened in front of you.", alt: "Class-B autoclave sterilizer with a water distiller in the sterilization corner" },
-];
-
-const docCameraIcon = (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M3 7h3l1.5-2h9L18 7h3v12H3z" />
-    <circle cx="12" cy="13" r="3.5" />
-  </svg>
-);
-
-const mStroke = {
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 1.7,
-  strokeLinecap: "round",
-  strokeLinejoin: "round",
-} as const;
-const iconExperience = (
-  <svg viewBox="0 0 24 24" {...mStroke} aria-hidden="true">
-    <circle cx="12" cy="12" r="9" />
-    <polyline points="12 7 12 12 15.5 14" />
-  </svg>
-);
-const iconTeaching = (
-  <svg viewBox="0 0 24 24" {...mStroke} aria-hidden="true">
-    <path d="M22 10 12 5 2 10l10 5 10-5Z" />
-    <path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5" />
-  </svg>
-);
-const iconResearch = (
-  <svg viewBox="0 0 24 24" {...mStroke} aria-hidden="true">
-    <circle cx="12" cy="9" r="6" />
-    <path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5" />
-  </svg>
-);
-
-type Doctor = {
-  degree: string;
-  name: string;
-  photo?: string;
-  roles: string[];
-  bio: string;
-  meta: { icon: React.ReactNode; text: string }[];
-  expertise: string[];
-};
-
-const doctors: Doctor[] = [
-  {
-    degree: "BDS, MDS · Periodontology & Oral Implantology",
-    name: "Dr. Shashank Deshpande",
-    roles: ["Periodontist", "Oral Implantologist", "PhD Scholar"],
-    bio: "A gum specialist and oral implantologist focused on advanced, evidence-based care with an emphasis on patient comfort and long-term oral health. He diagnoses and treats gum disease, performs periodontal surgery and places advanced implants, restoring both function and aesthetics with precision and painless, minimally invasive techniques.",
-    meta: [
-      { icon: iconExperience, text: "6+ years of clinical experience" },
-      { icon: iconTeaching, text: "Assistant Professor, Terna Dental College, Navi Mumbai" },
-      { icon: iconResearch, text: "PhD Scholar in Periodontology & Oral Implantology" },
-    ],
-    expertise: [
-      "Immediate dental implants",
-      "Gum & soft-tissue disease",
-      "Scaling & root planing",
-      "Periodontal flap surgery",
-      "Bone grafting & ridge augmentation",
-      "Gum grafting",
-      "Crown lengthening",
-      "Peri-implant care",
-    ],
-  },
-  {
-    degree: "BDS, MDS · Conservative Dentistry & Endodontics",
-    name: "Dr. Shivani Vyavahare Deshpande",
-    roles: ["Endodontist", "Cosmetic Dental Surgeon"],
-    bio: "A conservative dentistry and endodontics specialist dedicated to preserving natural teeth and restoring confident smiles through precise, minimally invasive care. Known for her gentle approach, she takes time to understand each patient and builds personalized, evidence-based treatment plans for comfortable, long-lasting results.",
-    meta: [
-      { icon: iconExperience, text: "4+ years of clinical experience" },
-      { icon: iconTeaching, text: "Faculty, MGM Dental College & Hospital, Kamothe, Mumbai" },
-      { icon: iconResearch, text: "BDS, Government Dental College, Nagpur" },
-    ],
-    expertise: [
-      "Root canal treatment",
-      "Aesthetic restorations",
-      "Full-mouth rehabilitation",
-      "Dental veneers",
-      "Smile enhancement",
-      "Minimally invasive dentistry",
-    ],
-  },
 ];
 
 export default function Home() {
@@ -316,46 +254,7 @@ export default function Home() {
             </div>
 
             {doctors.map((d, i) => (
-              <article className={`doc-card reveal${i % 2 === 1 ? " reverse" : ""}`} key={d.name}>
-                <div className="doc-photo" aria-hidden={d.photo ? undefined : true}>
-                  {d.photo ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={d.photo} alt={`Portrait of ${d.name}`} loading="lazy" />
-                  ) : (
-                    <>
-                      {docCameraIcon}
-                      <span>
-                        Photo placeholder
-                        <b>{d.name}</b>
-                      </span>
-                    </>
-                  )}
-                </div>
-                <div className="doc-info">
-                  <p className="doc-degree">{d.degree}</p>
-                  <h3>{d.name}</h3>
-                  <div className="doc-roles">
-                    {d.roles.map((r) => (
-                      <span key={r}>{r}</span>
-                    ))}
-                  </div>
-                  <p className="doc-bio">{d.bio}</p>
-                  <ul className="doc-meta">
-                    {d.meta.map((m) => (
-                      <li key={m.text}>
-                        {m.icon}
-                        <span>{m.text}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="doc-focus-label">Focus areas</p>
-                  <div className="doc-tags">
-                    {d.expertise.map((e) => (
-                      <span key={e}>{e}</span>
-                    ))}
-                  </div>
-                </div>
-              </article>
+              <DoctorCard doctor={d} reverse={i % 2 === 1} showLink key={d.slug} />
             ))}
           </div>
         </section>
@@ -387,6 +286,44 @@ export default function Home() {
                 </svg>
               </a>
             </div>
+          </div>
+        </section>
+
+        <section id="results" className="section results">
+          <div className="wrap">
+            <div className="section-head">
+              <div className="gold-rule" />
+              <h2>What a smile transformation can look like</h2>
+              <p>
+                A sense of the kind of change careful smile design, whitening and
+                restorative work can achieve, before treatment planning begins.
+              </p>
+            </div>
+            <div className="results-grid">
+              {smileResults.map((r, i) => (
+                <figure className="results-card reveal" style={{ ["--i"]: i } as React.CSSProperties} key={r.src}>
+                  <div className="results-photo">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={r.src} alt={r.alt} loading="lazy" />
+                    <span className="results-tag results-tag-before" aria-hidden="true">Before</span>
+                    <span className="results-tag results-tag-after" aria-hidden="true">After</span>
+                  </div>
+                  <figcaption>
+                    <h3>{r.title}</h3>
+                    <p>{r.desc}</p>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+            <p className="results-disclaimer">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <line x1="12" y1="11" x2="12" y2="16" />
+                <line x1="12" y1="8" x2="12.01" y2="8" />
+              </svg>
+              Shown for illustration only. These are stock photographs, not
+              photographs of Evoris patients, and actual results vary by case.
+            </p>
           </div>
         </section>
 
@@ -552,6 +489,20 @@ export default function Home() {
                 src={MAPS_EMBED}
               />
             </div>
+          </div>
+        </section>
+
+        <section id="quiz" className="section quiz-section">
+          <div className="wrap">
+            <div className="section-head">
+              <div className="gold-rule" />
+              <h2>Not sure what you need?</h2>
+              <p>
+                Pick what&apos;s bothering you and get a rough idea of the right
+                treatment before you book.
+              </p>
+            </div>
+            <SmileQuiz />
           </div>
         </section>
 

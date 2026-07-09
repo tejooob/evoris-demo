@@ -1,9 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Bodoni_Moda, Manrope } from "next/font/google";
 import "./globals.css";
-
-// Set this to the production domain before going live.
-const SITE_URL = "https://www.evorisdental.com";
+import { SITE_URL } from "@/lib/site";
 
 const bodoni = Bodoni_Moda({
   subsets: ["latin"],
