@@ -16,9 +16,6 @@ const manrope = Manrope({
   display: "swap",
 });
 
-const FAVICON =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23FDFBF7'/%3E%3Ctext x='16' y='23' font-family='Georgia' font-size='19' fill='%23a07c3a' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E";
-
 const DESCRIPTION =
   "Evoris Dental Care & Implant Center, Sector 8, Kharghar, Navi Mumbai. Dental implants, microscopic root canals, gum care and smile design by MDS specialists. Call 91371 61693.";
 
@@ -59,7 +56,7 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
-  icons: { icon: FAVICON },
+  icons: { icon: "/favicon.png" },
   category: "health",
 };
 

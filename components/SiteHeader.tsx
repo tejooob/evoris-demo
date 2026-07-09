@@ -5,10 +5,8 @@ export default function SiteHeader() {
     <header className="topbar">
       <div className="wrap">
         <a className="brand" href="/" aria-label="Evoris Dental Care and Implant Center, home">
-          <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
-            <path d="M20 4c-4.5 0-6 2.6-9 2.6S6.7 9 6.7 13.4c0 7 4.6 12.8 6.6 19.2.7 2.2 3.2 2.3 3.7 0 .5-2.5.6-7.2 3-7.2s2.5 4.7 3 7.2c.5 2.3 3 2.2 3.7 0 2-6.4 6.6-12.2 6.6-19.2 0-4.4-1.3-6.8-4.3-6.8S24.5 4 20 4Z" stroke="oklch(0.515 0.088 68)" strokeWidth="1.6" />
-            <circle cx="20" cy="14" r="3.4" fill="oklch(0.72 0.088 82 / 0.7)" />
-          </svg>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo.png" alt="" width={34} height={34} aria-hidden="true" />
           <span>
             <span className="brand-name">EVORIS</span>
             <span className="brand-sub">Dental Care &amp; Implant Center</span>

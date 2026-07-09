@@ -80,7 +80,7 @@ html.scrolled .topbar{
 .topbar .wrap{display:flex;align-items:center;gap:2rem;padding-block:0.8rem;transition:padding-block 300ms var(--ease-out)}
 html.scrolled .topbar .wrap{padding-block:0.5rem}
 .brand{display:flex;align-items:center;gap:0.7rem;text-decoration:none}
-.brand svg{width:34px;height:34px;flex:none}
+.brand img{width:34px;height:34px;flex:none;object-fit:contain}
 .brand-name{font-family:var(--font-display);font-size:1.3rem;letter-spacing:0.16em;color:var(--ink);font-weight:500}
 .brand-sub{display:block;font-family:var(--font-body);font-size:0.6rem;letter-spacing:0.26em;color:var(--taupe-ink);text-transform:uppercase;margin-top:1px}
 .topnav{display:flex;gap:1.6rem;margin-left:auto;align-items:center}
@@ -626,7 +626,13 @@ section{scroll-margin-top:4.5rem}
 /* ---------- footer ---------- */
 footer{background:var(--surface-2);color:var(--ink-soft);border-top:1px solid var(--line)}
 footer .wrap{padding-block:2.4rem;display:flex;flex-wrap:wrap;gap:1rem 2.5rem;align-items:center;justify-content:space-between;font-size:0.84rem}
-footer .f-brand{font-family:var(--font-display);letter-spacing:0.16em;color:var(--gold-ink);font-size:1.15rem;font-weight:500}
+footer .f-brand{display:inline-flex;align-items:center;gap:0.55rem;font-family:var(--font-display);letter-spacing:0.16em;color:var(--gold-ink);font-size:1.15rem;font-weight:500}
+.f-logo-chip{
+  display:inline-flex;align-items:center;justify-content:center;flex:none;
+  width:30px;height:30px;border-radius:50%;background:var(--bg);
+  box-shadow:0 1px 4px oklch(0.285 0.006 60 / 0.12);
+}
+.f-logo-chip img{width:22px;height:22px;object-fit:contain}
 footer a{color:var(--ink-body)}
 
 /* ---------- floating call (mobile) ---------- */
