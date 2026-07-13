@@ -160,7 +160,7 @@ const technology: { src: string; alt: string; name: string; desc: string }[] = [
   { src: "/clinic/tech-scaler.jpeg", name: "Ultrasonic scaler", desc: "DTE D5 LED ultrasonic scaling for thorough, comfortable cleaning and gum care.", alt: "DTE D5 LED ultrasonic scaler mounted on the dental unit" },
   { src: "/clinic/tech-curing-light.jpeg", name: "LED curing light", desc: "Ivoclar Bluephase N for fast, reliable setting of tooth-coloured fillings and bonding.", alt: "Ivoclar Bluephase N LED curing light on its charging stand" },
   { src: "/clinic/tech-obturation.jpeg", name: "Cordless obturation", desc: "Woodpecker Fi-P warm gutta-percha system for dense, precise root canal fillings.", alt: "Woodpecker Fi-P cordless gutta-percha obturation pen on its base" },
-  { src: "/clinic/tech-loupes.jpeg", name: "Magnification loupes", desc: "Admetec surgical loupes for magnified precision during fine and surgical procedures.", alt: "Admetec ergo dental magnification loupes with carrying case" },
+  { src: "/clinic/tech-loupes.jpeg", name: "Magnification loupes", desc: "Admetec ergo surgical loupes for magnified precision during fine and surgical procedures.", alt: "Admetec ergo dental magnification loupes with carrying case" },
   { src: "/clinic/tech-autoclave.jpeg", name: "Class-B sterilization", desc: "Autoclave and water distiller, with sealed instrument kits opened in front of you.", alt: "Class-B autoclave sterilizer with a water distiller in the sterilization corner" },
 ];
 
@@ -180,10 +180,11 @@ export default function Home() {
                 EVORIS
                 <small>DENTAL CARE &amp; IMPLANT CENTER</small>
               </h1>
+              <p className="hero-tagline">Where your care truly matters</p>
               <p className="hero-lede">
-                Specialist implant, root canal and gum care in Sector 8, Kharghar,
-                led by <strong>two MDS consultants</strong> under one roof. Careful
-                diagnosis first, honest advice always.
+                Your <strong>one-stop solution for every dental problem</strong> —
+                comprehensive care under one roof, from routine check-ups to
+                implants and complete smile makeovers.
               </p>
               <div className="hero-cta">
                 <a className="btn btn-gold" href={`tel:${PHONE}`}>
@@ -218,7 +219,7 @@ export default function Home() {
                 A specialist clinic, built around careful dentistry
               </h2>
               <p style={{ marginTop: "1rem", color: "var(--ink-soft)" }}>
-                Evoris is a husband-and-wife specialist practice in the heart of
+                Evoris is a specialist practice in the heart of
                 Kharghar. Every treatment plan starts with a proper examination and
                 X-ray diagnosis, explained to you in plain language before any work
                 begins.
@@ -227,7 +228,9 @@ export default function Home() {
                 <li><b>Specialists, not generalists:</b>{" "}both consultants hold MDS degrees in their fields.</li>
                 <li><b>Sterilization you can see:</b>{" "}sealed, autoclaved instrument kits opened in front of you.</li>
                 <li><b>Evening hours that fit office life:</b>{" "}open until 10 pm, six days a week.</li>
-                <li><b>Honest treatment plans:</b>{" "}clear costs upfront, no surprise add-ons mid-treatment.</li>
+                <li><b>Full transparency:</b>{" "}every treatment is planned with complete transparency and honesty — the diagnosis, the options and the costs are explained upfront, with no surprise add-ons mid-treatment.</li>
+                <li><b>State-of-the-art technology:</b>{" "}digital X-rays, magnification loupes and modern equipment for precise, comfortable treatment.</li>
+                <li><b>Open even on Sundays:</b>{" "}cannot make it on a weekday? Sunday appointments are available too.</li>
               </ul>
             </div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -265,8 +268,9 @@ export default function Home() {
               <div className="gold-rule" />
               <h2>Treatments at Evoris</h2>
               <p>
-                From painless root canals to implants, Invisalign and full-mouth
-                rehabilitation, all planned and performed in-house by the specialists.
+                From painless Root Canal Treatments to immediate dental implants,
+                aligners and full-mouth rehabilitation, all planned and performed
+                in-house by the specialists.
               </p>
             </div>
 

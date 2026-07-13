@@ -68,7 +68,7 @@ const options: QuizOption[] = [
     key: "crowding",
     label: "Crowded, crooked or gapped teeth",
     result: {
-      title: "Orthodontics & Invisalign",
+      title: "Orthodontics & Aligners",
       desc: "Braces or clear aligners can gradually straighten teeth without surgery, planned around your bite and schedule.",
       href: "/treatments#orthodontics",
       linkLabel: "See orthodontic treatment",
@@ -92,6 +92,9 @@ const options: QuizOption[] = [
 
 export default function SmileQuiz() {
   const [selected, setSelected] = useState<string | null>(null);
+  // Once the user has seen a result and come back, the scroll-reveal observer
+  // has already run, so re-mounted options must render already-revealed.
+  const [reshow, setReshow] = useState(false);
   const picked = options.find((o) => o.key === selected);
 
   return (
@@ -101,7 +104,7 @@ export default function SmileQuiz() {
           {options.map((o, i) => (
             <button
               type="button"
-              className="quiz-option reveal"
+              className={`quiz-option reveal${reshow ? " in" : ""}`}
               style={{ ["--i"]: i } as React.CSSProperties}
               key={o.key}
               onClick={() => setSelected(o.key)}
@@ -126,7 +129,14 @@ export default function SmileQuiz() {
                 Book an appointment
               </a>
             </div>
-            <button type="button" className="quiz-restart" onClick={() => setSelected(null)}>
+            <button
+              type="button"
+              className="quiz-restart"
+              onClick={() => {
+                setReshow(true);
+                setSelected(null);
+              }}
+            >
               &larr; Try a different answer
             </button>
           </div>

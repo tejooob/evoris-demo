@@ -4,7 +4,7 @@ export const services: Service[] = [
   { slug: "painless-dentistry", title: "Painless Dentistry", desc: "Anxiety-free care with gentle technique and modern numbing, start to finish.", alt: "Dentist treating a calm, comfortable patient" },
   { slug: "single-sitting-rct", title: "Single-Sitting Root Canal", desc: "Painless, microscope-guided root canals completed in one visit where possible.", alt: "Root canal treatment in progress" },
   { slug: "dental-implants", title: "Dental Implants", desc: "Titanium-rooted replacements that look, feel and chew like natural teeth.", alt: "Dental implant model" },
-  { slug: "invisalign", title: "Invisalign", desc: "Near-invisible clear aligners that straighten teeth without metal braces.", alt: "Clear Invisalign aligners held in hand" },
+  { slug: "invisalign", title: "Aligners", desc: "Near-invisible clear aligners that straighten teeth without metal braces.", alt: "Clear aligners held in hand" },
   { slug: "smile-makeover", title: "Smile Design & Makeover", desc: "A tailored plan of whitening, veneers and contouring for your best smile.", alt: "A bright, well-designed smile" },
   { slug: "teeth-whitening", title: "Teeth Whitening", desc: "In-clinic whitening for a visibly brighter smile in a single sitting.", alt: "Teeth whitening shade comparison" },
   { slug: "cosmetic-care", title: "Dental Cosmetic Care", desc: "Tooth-coloured corrections for chips, stains, gaps and uneven edges.", alt: "Cosmetic dentistry treatment" },

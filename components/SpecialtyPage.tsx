@@ -20,12 +20,14 @@ export default function SpecialtyPage({
   steps,
   faqs,
   otherSpecialty,
+  serviceTitleOverrides,
 }: {
   kicker: string;
   title: string;
   lede: React.ReactNode;
   conditions: string[];
   serviceSlugs: string[];
+  serviceTitleOverrides?: Record<string, string>;
   doctor: Doctor;
   steps: Step[];
   faqs: Faq[];
@@ -93,7 +95,7 @@ export default function SpecialtyPage({
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={`/services/${s.slug}.jpg`} alt={s.alt} loading="lazy" />
                   <div className="svc-body">
-                    <h3>{s.title}</h3>
+                    <h3>{serviceTitleOverrides?.[s.slug] ?? s.title}</h3>
                     <p>{s.desc}</p>
                   </div>
                 </article>

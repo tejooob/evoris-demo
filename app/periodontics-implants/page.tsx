@@ -13,12 +13,11 @@ const doctor = doctors.find((d) => d.slug === "shashank-deshpande")!;
 
 const conditions = [
   "Bleeding or swollen gums",
-  "Receding gums and gum recession",
+  "Receding gums and tooth sensitivity",
   "Loose or shifting teeth",
   "One or more missing teeth",
   "Persistent bad breath linked to gum disease",
   "Bone loss around teeth or old dentures",
-  "Failing or ill-fitting dentures",
   "A gummy smile needing crown lengthening",
   "Discomfort or infection around an existing implant",
 ];
@@ -78,6 +77,7 @@ export default function PeriodonticsImplants() {
       }
       conditions={conditions}
       serviceSlugs={["dental-implants", "gum-treatment", "implant-dentures", "full-mouth-rehab", "wisdom-tooth"]}
+      serviceTitleOverrides={{ "full-mouth-rehab": "Full Mouth Implant Rehabilitation" }}
       doctor={doctor}
       steps={steps}
       faqs={faqs}

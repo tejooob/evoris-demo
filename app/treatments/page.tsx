@@ -9,7 +9,7 @@ import { PHONE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Treatments",
   description:
-    "Dental treatments at Evoris Dental Care & Implant Center, Kharghar: painless dentistry, single-sitting root canals, dental implants, Invisalign, smile design, veneers, gum care, kids' dentistry, dentures and full mouth rehabilitation.",
+    "Dental treatments at Evoris Dental Care & Implant Center, Kharghar: painless dentistry, single-sitting root canal treatments, immediate dental implants, aligners, smile design, veneers, gum care, kids' dentistry, dentures and full mouth rehabilitation.",
   alternates: { canonical: "/treatments" },
 };
 
@@ -26,9 +26,10 @@ export default function Treatments() {
             <div className="gold-rule" />
             <h1>Treatments at Evoris</h1>
             <p className="tx-lede">
-              From painless root canals to implants, Invisalign and full-mouth
-              rehabilitation, every treatment is planned and performed in-house by our
-              two MDS specialists, with clear costs explained up front.
+              From painless Root Canal Treatments to immediate dental implants,
+              aligners and full-mouth rehabilitation, every treatment is planned and
+              performed in-house by our two MDS specialists, with clear costs
+              explained up front.
             </p>
             <p className="tx-specialty-links">
               Gum disease and dental implants are led by{" "}

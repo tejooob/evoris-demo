@@ -5,7 +5,7 @@ import { doctors } from "@/lib/doctors";
 export const metadata: Metadata = {
   title: "Root Canal & Restorative Dentistry in Kharghar",
   description:
-    "Root canal treatment, aesthetic restorations and smile design in Sector 8, Kharghar with Dr. Shivani Vyavahare Deshpande, MDS Conservative Dentistry & Endodontics. Single-sitting root canals, veneers and full mouth rehabilitation.",
+    "Root canal treatment, comprehensive cosmetic dentistry and smile design in Sector 8, Kharghar with Dr. Shivani Vyavahare Deshpande, MDS Conservative Dentistry & Endodontics. Single-sitting root canals, veneers, aesthetic restorations and full mouth rehabilitation.",
   alternates: { canonical: "/root-canal-dentistry" },
 };
 
@@ -33,7 +33,7 @@ const steps = [
   },
   {
     title: "Precise, minimally invasive treatment",
-    desc: "Root canal, restoration or veneers completed with modern, evidence-based technique.",
+    desc: "Root canal, comprehensive cosmetic dentistry or veneers completed with modern, evidence-based technique.",
   },
   {
     title: "A natural-looking finish",
@@ -44,7 +44,7 @@ const steps = [
 const faqs = [
   {
     q: "Is root canal treatment painful?",
-    a: "No. Modern root canal treatment is done under local anaesthesia and is generally no more uncomfortable than getting a filling. Most of the pain patients associate with root canals is actually the infection that existed before treatment.",
+    a: "No. Modern root canal treatment is done under local anaesthesia and is generally comfortable. Most of the pain patients associate with root canals is actually the infection that existed before treatment.",
   },
   {
     q: "How many visits does a root canal take?",
@@ -71,8 +71,8 @@ export default function RootCanalDentistry() {
       title="Root Canal & Restorative Dentistry in Kharghar"
       lede={
         <>
-          Root canal treatment, aesthetic restorations and smile design in Sector 8,
-          Kharghar, led by <strong>{doctor.name}</strong>, {doctor.degree}.
+          Root canal treatment, comprehensive cosmetic dentistry and smile design in
+          Sector 8, Kharghar, led by <strong>{doctor.name}</strong>, {doctor.degree}.
         </>
       }
       conditions={conditions}
