@@ -2,11 +2,24 @@ import type { Metadata } from "next";
 import SpecialtyPage from "@/components/SpecialtyPage";
 import { doctors } from "@/lib/doctors";
 
+const PERIO_DESCRIPTION =
+  "Gum disease treatment and dental implants in Sector 8, Kharghar with Dr. Shashank Deshpande, MDS Periodontist & Oral Implantologist. Bone grafting, gum surgery, immediate implants and peri-implant care.";
+
 export const metadata: Metadata = {
   title: "Periodontics & Dental Implants in Kharghar",
-  description:
-    "Gum disease treatment and dental implants in Sector 8, Kharghar with Dr. Shashank Deshpande, MDS Periodontist & Oral Implantologist. Bone grafting, gum surgery, immediate implants and peri-implant care.",
+  description: PERIO_DESCRIPTION,
   alternates: { canonical: "/periodontics-implants" },
+  openGraph: {
+    type: "website",
+    url: "/periodontics-implants",
+    title: "Periodontics & Dental Implants in Kharghar | Evoris Dental",
+    description: PERIO_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Periodontics & Dental Implants in Kharghar | Evoris Dental",
+    description: PERIO_DESCRIPTION,
+  },
 };
 
 const doctor = doctors.find((d) => d.slug === "shashank-deshpande")!;
@@ -69,6 +82,7 @@ export default function PeriodonticsImplants() {
     <SpecialtyPage
       kicker="Periodontology & Oral Implantology"
       title="Periodontics & Dental Implants in Kharghar"
+      path="/periodontics-implants"
       lede={
         <>
           Gum disease care and dental implant treatment in Sector 8, Kharghar, led by{" "}

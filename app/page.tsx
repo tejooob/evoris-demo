@@ -69,7 +69,7 @@ const whyItems: { icon: React.ReactNode; title: string; body: string }[] = [
       </svg>
     ),
     title: "Evening hours until 10 pm",
-    body: "Open six days a week from 5 pm to 10 pm, so working professionals can get specialist care without taking leave.",
+    body: "Open all seven days from 5 pm to 10 pm, so working professionals can get specialist care without taking leave.",
   },
   {
     icon: (
@@ -96,8 +96,8 @@ const whyItems: { icon: React.ReactNode; title: string; body: string }[] = [
         <polyline points="12 6 12 12 16 14" />
       </svg>
     ),
-    title: "Sunday visits available",
-    body: "Cannot make it on a weekday? Sunday appointments are available for those who need them.",
+    title: "Open all seven days",
+    body: "Cannot make it on a weekday? We are open on Sundays too, with the same full clinic hours.",
   },
 ];
 
@@ -196,8 +196,8 @@ export default function Home() {
                 </a>
               </div>
               <p className="hero-note">
-                Open Monday to Saturday &middot; <b>10 am – 2 pm</b> and{" "}
-                <b>5 pm – 10 pm</b> &middot; Sunday on appointment
+                Open all seven days &middot; <b>10 am – 2 pm</b> and{" "}
+                <b>5 pm – 10 pm</b>
               </p>
             </div>
           </div>
@@ -227,10 +227,10 @@ export default function Home() {
               <ul className="about-points">
                 <li><b>Specialists, not generalists:</b>{" "}both consultants hold MDS degrees in their fields.</li>
                 <li><b>Sterilization you can see:</b>{" "}sealed, autoclaved instrument kits opened in front of you.</li>
-                <li><b>Evening hours that fit office life:</b>{" "}open until 10 pm, six days a week.</li>
+                <li><b>Evening hours that fit office life:</b>{" "}open until 10 pm, all seven days a week.</li>
                 <li><b>Full transparency:</b>{" "}every treatment is planned with complete transparency and honesty — the diagnosis, the options and the costs are explained upfront, with no surprise add-ons mid-treatment.</li>
                 <li><b>State-of-the-art technology:</b>{" "}digital X-rays, magnification loupes and modern equipment for precise, comfortable treatment.</li>
-                <li><b>Open even on Sundays:</b>{" "}cannot make it on a weekday? Sunday appointments are available too.</li>
+                <li><b>Open even on Sundays:</b>{" "}we are open all seven days, with the same full hours on Sunday as every other day.</li>
               </ul>
             </div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -471,9 +471,7 @@ export default function Home() {
                   <div>
                     <span className="vi-label">Hours</span>
                     <p>
-                      Mon – Sat: 10 am – 2 pm &amp; 5 pm – 10 pm
-                      <br />
-                      Sunday: On appointment
+                      All 7 days: 10 am – 2 pm &amp; 5 pm – 10 pm
                     </p>
                   </div>
                 </div>

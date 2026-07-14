@@ -2,11 +2,24 @@ import type { Metadata } from "next";
 import SpecialtyPage from "@/components/SpecialtyPage";
 import { doctors } from "@/lib/doctors";
 
+const RCT_DESCRIPTION =
+  "Root canal treatment, comprehensive cosmetic dentistry and smile design in Sector 8, Kharghar with Dr. Shivani Vyavahare Deshpande, MDS Conservative Dentistry & Endodontics. Single-sitting root canals, veneers, aesthetic restorations and full mouth rehabilitation.";
+
 export const metadata: Metadata = {
   title: "Root Canal & Restorative Dentistry in Kharghar",
-  description:
-    "Root canal treatment, comprehensive cosmetic dentistry and smile design in Sector 8, Kharghar with Dr. Shivani Vyavahare Deshpande, MDS Conservative Dentistry & Endodontics. Single-sitting root canals, veneers, aesthetic restorations and full mouth rehabilitation.",
+  description: RCT_DESCRIPTION,
   alternates: { canonical: "/root-canal-dentistry" },
+  openGraph: {
+    type: "website",
+    url: "/root-canal-dentistry",
+    title: "Root Canal & Cosmetic Dentistry in Kharghar | Evoris Dental",
+    description: RCT_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Root Canal & Cosmetic Dentistry in Kharghar | Evoris Dental",
+    description: RCT_DESCRIPTION,
+  },
 };
 
 const doctor = doctors.find((d) => d.slug === "shivani-vyavahare-deshpande")!;
@@ -69,6 +82,7 @@ export default function RootCanalDentistry() {
     <SpecialtyPage
       kicker="Conservative Dentistry & Endodontics"
       title="Root Canal & Restorative Dentistry in Kharghar"
+      path="/root-canal-dentistry"
       lede={
         <>
           Root canal treatment, comprehensive cosmetic dentistry and smile design in

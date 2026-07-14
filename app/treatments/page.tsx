@@ -4,13 +4,52 @@ import SiteFooter from "@/components/SiteFooter";
 import FloatingButtons from "@/components/FloatingButtons";
 import SiteEnhancements from "@/components/SiteEnhancements";
 import { services } from "@/lib/services";
-import { PHONE } from "@/lib/site";
+import { PHONE, SITE_URL } from "@/lib/site";
+
+const TX_DESCRIPTION =
+  "Dental treatments at Evoris Dental Care & Implant Center, Kharghar: painless dentistry, single-sitting root canal treatments, immediate dental implants, aligners, smile design, veneers, gum care, kids' dentistry, dentures and full mouth rehabilitation.";
 
 export const metadata: Metadata = {
   title: "Treatments",
-  description:
-    "Dental treatments at Evoris Dental Care & Implant Center, Kharghar: painless dentistry, single-sitting root canal treatments, immediate dental implants, aligners, smile design, veneers, gum care, kids' dentistry, dentures and full mouth rehabilitation.",
+  description: TX_DESCRIPTION,
   alternates: { canonical: "/treatments" },
+  openGraph: {
+    type: "website",
+    url: "/treatments",
+    title: "Dental Treatments at Evoris | Kharghar, Navi Mumbai",
+    description: TX_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dental Treatments at Evoris | Kharghar, Navi Mumbai",
+    description: TX_DESCRIPTION,
+  },
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Treatments", item: `${SITE_URL}/treatments/` },
+  ],
+};
+
+const servicesJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Dental treatments at Evoris Dental Care & Implant Center",
+  itemListElement: services.map((s, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "MedicalProcedure",
+      name: s.title,
+      description: s.desc,
+      url: `${SITE_URL}/treatments/#${s.slug}`,
+      provider: { "@id": `${SITE_URL}/#clinic` },
+    },
+  })),
 };
 
 export default function Treatments() {
@@ -75,6 +114,15 @@ export default function Treatments() {
       <SiteFooter />
       <FloatingButtons />
       <SiteEnhancements />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
+      />
     </>
   );
 }

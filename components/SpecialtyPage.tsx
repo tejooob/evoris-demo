@@ -5,7 +5,7 @@ import FloatingButtons from "@/components/FloatingButtons";
 import SiteEnhancements from "@/components/SiteEnhancements";
 import type { Doctor } from "@/lib/doctors";
 import { services } from "@/lib/services";
-import { PHONE } from "@/lib/site";
+import { PHONE, SITE_URL } from "@/lib/site";
 
 type Faq = { q: string; a: string };
 type Step = { title: string; desc: string };
@@ -14,6 +14,7 @@ export default function SpecialtyPage({
   kicker,
   title,
   lede,
+  path,
   conditions,
   serviceSlugs,
   doctor,
@@ -25,6 +26,7 @@ export default function SpecialtyPage({
   kicker: string;
   title: string;
   lede: React.ReactNode;
+  path: string;
   conditions: string[];
   serviceSlugs: string[];
   serviceTitleOverrides?: Record<string, string>;
@@ -34,15 +36,43 @@ export default function SpecialtyPage({
   otherSpecialty: { href: string; label: string };
 }) {
   const relatedServices = services.filter((s) => serviceSlugs.includes(s.slug));
+  const pageUrl = `${SITE_URL}${path}/`;
 
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "@id": `${pageUrl}#faq`,
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
       name: f.q,
       acceptedAnswer: { "@type": "Answer", text: f.a },
     })),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Treatments", item: `${SITE_URL}/treatments/` },
+      { "@type": "ListItem", position: 3, name: title, item: pageUrl },
+    ],
+  };
+
+  const medicalPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: title,
+    about: { "@id": `${SITE_URL}/#clinic` },
+    lastReviewed: new Date().toISOString().slice(0, 10),
+    reviewedBy: { "@type": "Physician", name: doctor.name },
+    significantLink: relatedServices.map((s) => `${SITE_URL}/treatments/#${s.slug}`),
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [".tx-lede"],
+    },
   };
 
   return (
@@ -175,6 +205,14 @@ export default function SpecialtyPage({
       <FloatingButtons />
       <SiteEnhancements />
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalPageJsonLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

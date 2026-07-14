@@ -138,7 +138,6 @@ export default function BookForm() {
                 </option>
                 <option>Morning (10 am – 2 pm)</option>
                 <option>Evening (5 pm – 10 pm)</option>
-                <option>Sunday (on appointment)</option>
               </select>
             </div>
           </div>

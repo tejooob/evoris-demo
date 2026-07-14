@@ -1,5 +1,10 @@
-// Set this to the production domain before going live.
-export const SITE_URL = "https://www.evorisdental.com";
+// Production domain. Canonical host is the non-www apex; configure hosting to
+// 301-redirect www -> apex so canonicals stay consistent.
+export const SITE_URL = "https://evorisdentalcare.in";
+
+// Google Search Console verification token. Paste the value from the
+// "HTML tag" method (the content="..." string) once the domain is added.
+export const GSC_VERIFICATION = "";
 
 export const PHONE = "+919137161693";
 export const WHATSAPP =
