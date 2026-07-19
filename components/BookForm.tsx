@@ -125,7 +125,7 @@ export default function BookForm() {
                 <option>Crown or Bridge</option>
                 <option>Wisdom Tooth Removal</option>
                 <option>Kids&apos; Dentistry</option>
-                <option>Cleaning &amp; Polishing</option>
+                <option>Teeth Cleaning &amp; Polishing</option>
                 <option>General Checkup</option>
                 <option>Not sure yet</option>
               </select>
