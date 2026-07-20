@@ -1,6 +1,9 @@
-// Production domain. Canonical host is the non-www apex; configure hosting to
-// 301-redirect www -> apex so canonicals stay consistent.
-export const SITE_URL = "https://evorisdentalcare.in";
+// Production domain. Canonical host is www, matching the host that actually
+// serves the site — the apex 308-redirects to www. Every canonical, sitemap
+// URL, robots host and schema @id derives from this, so if the primary domain
+// is ever switched to the apex, change it here too or canonicals will point at
+// a redirect.
+export const SITE_URL = "https://www.evorisdentalcare.in";
 
 // Google Search Console verification token. Paste the value from the
 // "HTML tag" method (the content="..." string) once the domain is added.
