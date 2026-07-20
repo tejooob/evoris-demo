@@ -72,9 +72,9 @@ export default function Treatments() {
             </p>
             <p className="tx-specialty-links">
               Gum disease and dental implants are led by{" "}
-              <a href="/periodontics-implants">periodontics &amp; dental implants</a>{" "}
+              <a href="/periodontics-implants/">periodontics &amp; dental implants</a>{" "}
               with Dr. Shashank Deshpande. Root canals, veneers and smile design are led
-              by <a href="/root-canal-dentistry">root canal &amp; restorative dentistry</a>{" "}
+              by <a href="/root-canal-dentistry/">root canal &amp; restorative dentistry</a>{" "}
               with Dr. Shivani Vyavahare Deshpande.
             </p>
           </div>

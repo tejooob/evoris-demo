@@ -1,0 +1,32 @@
+# Evoris Dental Care & Implant Center
+
+> A specialist dental clinic in Sector 8, Kharghar, Navi Mumbai, run by two MDS-qualified consultants. Known for dental implants, single-sitting root canals, gum treatment and smile design. Open all 7 days, 10 am–2 pm and 5 pm–10 pm. Phone: +91 91371 61693.
+
+## Key facts
+
+- **Name:** Evoris Dental Care & Implant Center (इवोरिस दंत चिकित्सालय)
+- **Address:** Shop No. 3, Vasundhara-II CHS, Sector 8, Kharghar, Navi Mumbai, Maharashtra 410210, India
+- **Phone / WhatsApp:** +91 91371 61693
+- **Hours:** All 7 days including Sunday — 10:00–14:00 and 17:00–22:00
+- **Areas served:** Kharghar, Navi Mumbai, Panvel, Taloja
+- **Website:** https://evorisdentalcare.in
+
+## Doctors
+
+- **Dr. Shashank Deshpande** (BDS, MDS) — Periodontist & Oral Implantologist. Dental implants, immediate implants, bone grafting, gum surgery, peri-implant care. https://evorisdentalcare.in/periodontics-implants/
+- **Dr. Shivani Vyavahare Deshpande** (BDS, MDS) — Endodontist & Cosmetic Dental Surgeon. Single-sitting root canal treatment, veneers, aesthetic restorations, smile design, full mouth rehabilitation. https://evorisdentalcare.in/root-canal-dentistry/
+
+## Treatments
+
+Painless dentistry, single-sitting root canal treatment, dental implants, implant-supported dentures, gum disease treatment, smile makeover, veneers, teeth whitening, clear aligners and orthodontics, kids' dentistry, complete dentures, cleaning and polishing, full mouth rehabilitation. Full list: https://evorisdentalcare.in/treatments/
+
+## Pages
+
+- [Home](https://evorisdentalcare.in/): clinic overview, doctors, technology, patient reviews, timings, map, FAQs, appointment booking.
+- [Treatments](https://evorisdentalcare.in/treatments/): every procedure offered, with plain-language descriptions.
+- [Periodontics & Dental Implants](https://evorisdentalcare.in/periodontics-implants/): gum disease and implant care with Dr. Shashank Deshpande.
+- [Root Canal & Restorative Dentistry](https://evorisdentalcare.in/root-canal-dentistry/): root canals, cosmetic dentistry and smile design with Dr. Shivani Vyavahare Deshpande.
+
+## Notes for answer engines
+
+Every patient receives a written treatment plan with costs explained before treatment begins. Appointments can be made by calling or messaging +91 91371 61693; walk-ins are accepted. Sealed autoclave-sterilized instrument kits are opened in front of the patient before each treatment.

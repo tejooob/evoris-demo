@@ -12,8 +12,8 @@ export default function SiteFooter() {
           EVORIS &middot; Dental Care &amp; Implant Center
         </span>
         <span>
-          <a href="/periodontics-implants">Dr. Shashank Deshpande</a> &middot;{" "}
-          <a href="/root-canal-dentistry">Dr. Shivani Vyavahare Deshpande</a>
+          <a href="/periodontics-implants/">Dr. Shashank Deshpande</a> &middot;{" "}
+          <a href="/root-canal-dentistry/">Dr. Shivani Vyavahare Deshpande</a>
         </span>
         <span>
           <a href={`tel:${PHONE}`}>91371 61693</a> &middot; Sector 8, Kharghar

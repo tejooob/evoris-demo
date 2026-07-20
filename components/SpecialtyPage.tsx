@@ -132,7 +132,7 @@ export default function SpecialtyPage({
               ))}
             </div>
             <p className="sp-more-link">
-              <a href="/treatments">See all treatments at Evoris &rarr;</a>
+              <a href="/treatments/">See all treatments at Evoris &rarr;</a>
             </p>
           </div>
         </section>

@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Bodoni_Moda, Manrope } from "next/font/google";
 import "./globals.css";
-import { SITE_URL, GSC_VERIFICATION, GOOGLE_REVIEWS } from "@/lib/site";
+import { SITE_URL, GSC_VERIFICATION, GOOGLE_REVIEWS, RATING_VALUE, REVIEW_COUNT } from "@/lib/site";
 import { services } from "@/lib/services";
 
 const bodoni = Bodoni_Moda({
@@ -110,6 +110,16 @@ const clinic = {
   logo: `${SITE_URL}/logo.png`,
   hasMap: GOOGLE_REVIEWS,
   sameAs: [GOOGLE_REVIEWS],
+  // Google ignores self-serving aggregateRating on LocalBusiness (no star rich
+  // result), but Bing and answer engines do read it. Sourced from the Google
+  // Business Profile — see lib/site.ts.
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: RATING_VALUE,
+    reviewCount: REVIEW_COUNT,
+    bestRating: 5,
+    worstRating: 1,
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: "Shop No. 3, Vasundhara-II CHS, Sector 8, Kharghar",

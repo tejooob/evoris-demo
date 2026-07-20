@@ -4,7 +4,13 @@ export const SITE_URL = "https://evorisdentalcare.in";
 
 // Google Search Console verification token. Paste the value from the
 // "HTML tag" method (the content="..." string) once the domain is added.
-export const GSC_VERIFICATION = "";
+export const GSC_VERIFICATION = "2nXuCp00iEpxjwGh0IR0nH4fHGYuuqxeOxCXFxK2s8U";
+
+// Google Business Profile rating, as of 2026-07-21. A stale count is harmless
+// but refresh these when the site is next touched — they are published as
+// aggregateRating in the clinic schema, so they must stay truthful.
+export const RATING_VALUE = 5;
+export const REVIEW_COUNT = 47;
 
 export const PHONE = "+919137161693";
 export const WHATSAPP =

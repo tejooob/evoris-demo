@@ -23,11 +23,11 @@ export default function SiteHeader() {
             </a>
             <div className="nav-drop-menu">
               <a href="/#doctors">Meet both doctors</a>
-              <a href="/periodontics-implants">Periodontics &amp; Implants</a>
-              <a href="/root-canal-dentistry">Root Canal &amp; Restorative</a>
+              <a href="/periodontics-implants/">Periodontics &amp; Implants</a>
+              <a href="/root-canal-dentistry/">Root Canal &amp; Restorative</a>
             </div>
           </div>
-          <a href="/treatments">Treatments</a>
+          <a href="/treatments/">Treatments</a>
           <a href="/#why">Why Us</a>
           <a href="/#visit">Visit Us</a>
           <a className="call-pill" href="/#book">

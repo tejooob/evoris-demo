@@ -8,7 +8,7 @@ import SiteFooter from "@/components/SiteFooter";
 import FloatingButtons from "@/components/FloatingButtons";
 import { doctors } from "@/lib/doctors";
 import { services } from "@/lib/services";
-import { PHONE, WHATSAPP, MAPS_SEARCH, MAPS_EMBED, GOOGLE_REVIEWS } from "@/lib/site";
+import { PHONE, WHATSAPP, MAPS_SEARCH, MAPS_EMBED, GOOGLE_REVIEWS, SITE_URL, RATING_VALUE, REVIEW_COUNT } from "@/lib/site";
 
 function PhoneIcon({ size = 15 }: { size?: number }) {
   return (
@@ -36,6 +36,55 @@ function GoogleG() {
     </svg>
   );
 }
+
+// Answers phrased to stand alone: each one restates the clinic, the locality
+// and the fact, so an answer engine can lift a single line as a citation
+// without needing the surrounding page for context.
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Where is Evoris Dental Care & Implant Center located?",
+    a: "Evoris Dental Care & Implant Center is at Shop No. 3, Vasundhara-II CHS, Sector 8, Kharghar, Navi Mumbai 410210 — a short drive from Sectors 6, 7, 10, 12 and 20, and close to Kharghar railway station. Parking is available outside the clinic.",
+  },
+  {
+    q: "What are the clinic timings?",
+    a: "The clinic is open all 7 days of the week, from 10 am to 2 pm and again from 5 pm to 10 pm, including Sundays. Evening and Sunday appointments make it easy for working professionals to visit.",
+  },
+  {
+    q: "How do I book an appointment at Evoris?",
+    a: "Call or WhatsApp 91371 61693, or fill the booking form on this page and the team will confirm your slot by phone within a few hours. Walk-ins are welcome, but a prior booking means no waiting.",
+  },
+  {
+    q: "Who are the dentists at Evoris Dental Care?",
+    a: "Evoris is run by two MDS specialists. Dr. Shashank Deshpande (BDS, MDS) is a Periodontist and Oral Implantologist who handles gum treatment and dental implants. Dr. Shivani Vyavahare Deshpande (BDS, MDS) is an Endodontist and Cosmetic Dental Surgeon who handles root canals, veneers and smile design.",
+  },
+  {
+    q: "Is a root canal at Evoris painful?",
+    a: "No. Root canals at Evoris are performed under effective local anaesthesia with rotary endodontic instruments, and most cases are completed in a single sitting. Patients typically describe the procedure as no more uncomfortable than a routine filling.",
+  },
+  {
+    q: "Do you place dental implants in a single visit?",
+    a: "In suitable cases, yes. Dr. Shashank Deshpande places immediate implants — the implant goes in at the same appointment as the extraction, so there is no long gap without a tooth. Whether that is possible for you depends on bone quality and infection, which is assessed with an X-ray at the first visit.",
+  },
+  {
+    q: "How much does a dental implant or root canal cost in Kharghar?",
+    a: "Cost depends on the tooth, the implant system and whether bone grafting or a crown is needed. Evoris gives every patient a written treatment plan with all costs explained before any procedure begins, so there are no surprise add-ons mid-treatment. Call 91371 61693 for an estimate for your case.",
+  },
+  {
+    q: "Do you treat children and nervous patients?",
+    a: "Yes. Evoris offers kids' dentistry and takes a deliberately gentle, painless approach for anxious patients — everything is explained before it is done, and treatment is paced so you stay comfortable.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": `${SITE_URL}/#faq`,
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 
 const whyItems: { icon: React.ReactNode; title: string; body: string }[] = [
   {
@@ -283,7 +332,7 @@ export default function Home() {
               ))}
             </ul>
             <div className="svc-teaser-cta">
-              <a className="btn btn-gold" href="/treatments">
+              <a className="btn btn-gold" href="/treatments/">
                 View all treatments
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M5 12h14M13 6l6 6-6 6" />
@@ -406,7 +455,8 @@ export default function Home() {
               <div className="gold-rule" />
               <h2>What our patients say</h2>
               <p>
-                Feedback from patients treated at Evoris Dental Care &amp; Implant
+                Rated {RATING_VALUE.toFixed(1)} out of 5 from {REVIEW_COUNT} Google
+                reviews by patients treated at Evoris Dental Care &amp; Implant
                 Center, Kharghar.
               </p>
             </div>
@@ -508,6 +558,26 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="faq" className="section sp-faq">
+          <div className="wrap">
+            <div className="section-head">
+              <div className="gold-rule" />
+              <h2>Frequently asked questions</h2>
+              <p>
+                Timings, costs, and what to expect at the Kharghar clinic.
+              </p>
+            </div>
+            <div className="sp-faq-list">
+              {faqs.map((f) => (
+                <details className="sp-faq-item" key={f.q}>
+                  <summary>{f.q}</summary>
+                  <p>{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="book" className="section book">
           <div className="wrap">
             <div className="section-head">
@@ -537,6 +607,11 @@ export default function Home() {
       <SiteFooter />
       <FloatingButtons />
       <SiteEnhancements />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
     </>
   );
 }
